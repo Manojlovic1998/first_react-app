@@ -11,12 +11,20 @@ function Expenses(props) {
         setFilterYear(filterYear);
     };
 
+    const filterExpenseItems = props.items.filter((item) => {
+            return item.date.toLocaleString('en-eu', {year: 'numeric'}) === year;
+    });
+
     return (
         <div>
             <Card className="expenses">
                 <ExpensesFilter selected={year} onChangeFilterYear={updateFilterYear}/>
-                {props.items.map((expense) => (
-                    <ExpenseItem key={expense.id} date={expense.date} amount={expense.amount} title={expense.title}/>))}
+                {filterExpenseItems.map((expense) => (
+                    <ExpenseItem
+                        key={expense.id}
+                        date={expense.date}
+                        amount={expense.amount}
+                        title={expense.title}/>))}
             </Card>
         </div>
     );
