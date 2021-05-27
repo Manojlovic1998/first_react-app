@@ -17,8 +17,6 @@ const ExpenseForm = (props) => {
     };
 
 
-
-
     const submitHandler = (event) => {
         event.preventDefault();
 
@@ -34,6 +32,10 @@ const ExpenseForm = (props) => {
         setEnteredDate('');
     };
 
+    if (!props.toggleStatus) {
+        return null;
+    }
+
     return (
         <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
@@ -47,10 +49,12 @@ const ExpenseForm = (props) => {
                 </div>
                 <div className="new-expense__control">
                     <label>Date</label>
-                    <input onChange={dateChangeHandler} value={enteredDate} type="date" min="2019-01-01" step="2022-12-31"/>
+                    <input onChange={dateChangeHandler} value={enteredDate} type="date" min="2019-01-01"
+                           step="2022-12-31"/>
                 </div>
             </div>
             <div className="new-expense__actions">
+                <button type="button" onClick={props.onCloseExpenseForm}>Close</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>
