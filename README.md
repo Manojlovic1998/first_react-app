@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Expenses List App
+
+This is the test app I have built using React. It is just a fast prototype built for the sake of learning.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
